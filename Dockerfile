@@ -18,6 +18,11 @@ RUN apt-get update && apt-get install -y \
     libmcrypt-dev \
     && docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
+    && npm install -g npm@latest
+
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
@@ -25,6 +30,8 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN composer install
+
+RUN npm install && npm run build
 
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage
