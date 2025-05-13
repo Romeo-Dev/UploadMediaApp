@@ -1,0 +1,13 @@
+/.idea
+/.DS-store
+/.git
+/staging.env
+/.env
+.devcontainer
+/docker-compose.yml
+/.env.example
+/.gitignore
+/.gitattributes
+/README.md
+/Dockerfile
+/.dockerignore
