@@ -14,7 +14,7 @@
                     <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('upload') ? 'active' : '' }}" href="{{ "#" }}">Carica</a>
+                    <a class="nav-link {{ request()->routeIs('extra_image.index') ? 'active' : '' }}" href="{{ route('extra_image.index') }}">Carica</a>
                 </li>
             </ul>
         </div>

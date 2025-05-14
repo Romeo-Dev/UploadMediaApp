@@ -3,3 +3,4 @@
         <span class="text-muted">&copy; {{ date('Y') }} LaravelApp. All rights reserved.</span>
     </div>
 </footer>
+@stack('scripts')

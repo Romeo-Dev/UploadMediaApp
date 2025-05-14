@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ExtraImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +19,5 @@ Route::get('/laravel', function () {
     return view('welcome');
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/upload', [ExtraImageController::class, 'index'])->name('extra_image.index');
+Route::post('/upload', [ExtraImageController::class, 'storeExtraImage'])->name('extra_image.upload');
