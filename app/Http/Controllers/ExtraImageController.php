@@ -78,7 +78,7 @@ class ExtraImageController extends Controller
         $validate = $request->validate([
             'search' => 'nullable|string',
             'sort' => 'required|string',
-            'is_deleted' => 'nullable'
+            'is_deleted' => 'nullable',
         ]);
 
         $query = ExtraImage::query();

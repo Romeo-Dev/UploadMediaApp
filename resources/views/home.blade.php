@@ -40,6 +40,11 @@
         @endforeach
     </div>
 
+    @if(request()->routeIs('home'))
+        <div class="d-flex justify-content-center mt-lg-3">
+            {{ $images->links() }}
+        </div>
+    @endif
 </div>
 
 @push('scripts')
