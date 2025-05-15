@@ -20,4 +20,7 @@ Route::get('/laravel', function () {
 });
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/upload', [ExtraImageController::class, 'index'])->name('extra_image.index');
+Route::get('/filter', [ExtraImageController::class, 'filter'])->name('extra_image.filter');
 Route::post('/upload', [ExtraImageController::class, 'storeExtraImage'])->name('extra_image.upload');
+Route::get('/restore/{extraImage}', [ExtraImageController::class, 'restoreExtraImage'])->name('extra_image.restore');
+Route::get('/exclude/{extraImage}', [ExtraImageController::class, 'excludeExtraImage'])->name('extra_image.exclude');

@@ -5,7 +5,6 @@
 @section('content')
 <div class="container">
 
-{{-- Errori di validazione banali 422--}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul class="mb-0">
@@ -16,12 +15,7 @@
         </div>
     @endif
 
-    @if(session('success'))
-        <div class="alert alert-success">{{session('success')}}</div>
-    @endif
-    @if(session('error'))
-        <div class="alert alert-danger">{{session('error')}}</div>
-    @endif
+    @include('components._message_bag')
 
     <h1 class="mb-4">Carica immagine</h1>
 

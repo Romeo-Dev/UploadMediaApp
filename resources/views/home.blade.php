@@ -5,33 +5,9 @@
 @section('content')
 <div class="container">
 
-    {{-- Form di Filtri --}}
-    <form method="GET" action="{{ '#' }}" class="row mb-4 align-images-end">
-        <div class="col-md-4">
-            <label for="search" class="form-label">Cerca</label>
-            <input type="text" name="search" id="search" value="{{ request('search') }}" class="form-control" placeholder="Cerca per titolo o descrizione...">
-        </div>
+    @include('components._message_bag')
 
-        <div class="col-md-3">
-            <label for="sort" class="form-label">Ordina per</label>
-            <select name="sort" id="sort" class="form-select">
-                <option value="title" {{ request('sort') == 'title' ? 'selected' : '' }}>Titolo</option>
-                <option value="date" {{ request('sort') == 'date' ? 'selected' : '' }}>Data</option>
-            </select>
-        </div>
-
-        <div class="col-md-3">
-            <label class="form-label d-block">Mostra esclusi</label>
-            <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="deleted" name="deleted" value="1" {{ request('deleted') ? 'checked' : '' }}>
-                <label class="form-check-label" for="deleted">Soft deleted</label>
-            </div>
-        </div>
-
-        <div class="col-md-2 text-end">
-            <button type="submit" class="btn btn-primary w-100">Filtra</button>
-        </div>
-    </form>
+    @include('components._filter')
 
     <div class="d-flex justify-content-end mb-3">
         <button id="toggleView" class="btn btn-outline-secondary">
@@ -53,7 +29,11 @@
                         <p class="card-text">file_name : {{ $media->file_name ?? '' }}</p>
                         <p class="card-text">estensione : {{ $media->extension ?? ''}}</p>
                         <p class="card-text">dimensione : {{ $media->size ?? '' }}</p>
-                        <a href="{{ '' }}" class="btn btn-danger">Escludi</a>
+                        @if(isset($image->deleted_at))
+                            <a href="{{ route('extra_image.restore', ['extraImage' => $image->id]) }}" class="btn btn-success">Restore</a>
+                        @else
+                            <a href="{{ route('extra_image.exclude', ['extraImage' => $image->id]) }}" class="btn btn-danger">Escludi</a>
+                        @endif
                     </div>
                 </div>
             </div>
