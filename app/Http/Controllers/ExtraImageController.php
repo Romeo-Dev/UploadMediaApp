@@ -17,7 +17,7 @@ class ExtraImageController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'file' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'required|file|mimes:jpg,jpeg,png,svg|max:2048',
         ]);
 
         DB::beginTransaction();
